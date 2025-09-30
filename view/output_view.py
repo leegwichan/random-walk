@@ -1,36 +1,35 @@
 from typing import List, Tuple
-from vpython import *
-
-# 3D 캔버스 설정
-scene.title = "N Particles Visualization"
-scene.width = 800
-scene.height = 600
-scene.background = color.black
-scene.autoscale = False
-scene.show_axis = True
+import matplotlib.pyplot as plt
 
 ParticlePosition = Tuple[float, float, float]
-particles = []
 
 
-def show_particles(particle_positions: List[ParticlePosition]):
-    max_x = max(abs(pos[0]) for pos in particle_positions)
-    max_y = max(abs(pos[1]) for pos in particle_positions)
-    max_z = max(abs(pos[2]) for pos in particle_positions)
+def show_particles(particle_positions: List[ParticlePosition], title: str):
+    X = [pos[0] for pos in particle_positions]
+    Y = [pos[1] for pos in particle_positions]
+    Z = [pos[2] for pos in particle_positions]
 
-    max_movement = max(max_x, max_y, max_z)
-    scene.range = max_movement * 1.5
-    visual_radius = scene.range * 0.005
-    scene.center = vector(0, 0, -max_z / 2)
-    scene.camera.pos = vector(0, 0, scene.range)
+    fig = plt.figure(figsize=(10, 8))
+    ax = fig.add_subplot(111, projection='3d')
 
+    # 그래프 눈금 설정
+    ax.scatter(X, Y, Z, c='blue', marker='o', s=1)
+    limit = _calculate_limit(X, Y, Z)
+    ax.set_xlim(-limit, limit)
+    ax.set_ylim(-limit, limit)
+    ax.set_zlim(-limit, 0)
+    ax.set_box_aspect([1, 1, 1])
 
-    for pos in particle_positions:
-        x, y, z = pos
-        print(x, y, z)
-        particle_sphere = sphere(pos=vector(x, y, z), radius=visual_radius, color=color.green)
-        particles.append(particle_sphere)
-    print(f"{len(particle_positions)}개의 입자가 3D 공간에 시각화되었습니다.")
+    # 그래프 표기 설정
+    ax.set_xlabel('X Axis (m)')
+    ax.set_ylabel('Y Axis (m)')
+    ax.set_zlabel('Z Axis (m)')
+    ax.set_title(title)
+    plt.show()
 
-    while True:
-        rate(30)  # 초당 30프레임으로 업데이트
+def _calculate_limit(X: List[float], Y: List[float], Z: List[float]) -> float:
+
+    max_x = max(abs(v) for v in X)
+    max_y = max(abs(v) for v in Y)
+    max_z = max(abs(v) for v in Z)
+    return max(max_x, max_y, max_z) * 1.1

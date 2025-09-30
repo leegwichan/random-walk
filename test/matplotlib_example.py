@@ -11,6 +11,7 @@ if __name__ == "__main__":
     ax = fig.add_subplot(111, projection='3d')
 
     # 3D 산점도 그리기
+    ax.set_box_aspect([1, 1, 1])
     ax.scatter(X, Y, Z, c='blue', marker='o')
 
     # 축 레이블 설정
