@@ -7,15 +7,21 @@ GLYCEROL_VISCOSITY = 1.412  # Pa·s (N·s/m^2) at 20 degrees Celsius
 ETHANOL_DENSITY = 789  # kg/m^3 at 20 degrees Celsius
 ETHANOL_VISCOSITY = 0.0012  # Pa·s (N·s/m^2)
 
-IRON_DENSITY = 7874  # kg/m^3 (밀도가 높은 경우)
-IRON_PARTICLE_RADIUS = 10e-6 # m
-SILICA_DENSITY = 2650  # kg/m^3 (확산과 침강의 균형)
-SILICA_PARTICLE_RADIUS = 2e-6  # m
+EPS_DENSITY = 50 # kg/m^3 (발포 폴리스티렌 (EPS), 매우 가벼운 입자)
+EPS_PARTICLE_RADIUS = 1e-6  # m
 LATEX_DENSITY = 1050  # kg/m^3 (물과 밀도가 비슷하여 순수한 브라운 운동)
 LATEX_PARTICLE_RADIUS = 500e-9  # m
+PVC_DENSITY = 1380  # kg/m^3 (폴리염화비닐, 밀도가 약간 높은 경우)
+PVC_PARTICLE_RADIUS = 1e-6  # m
+SILICA_DENSITY = 2650  # kg/m^3 (확산과 침강의 균형)
+SILICA_PARTICLE_RADIUS = 2e-6  # m
+IRON_DENSITY = 7874  # kg/m^3 (밀도가 높은 경우)
+IRON_PARTICLE_RADIUS = 10e-6  # m
 
 
 def mass(density, radius):
-    return 4/3 * math.pi * density * (radius ** 3)
+    return 4 / 3 * math.pi * density * (radius ** 3)
+
+
 def volume(radius):
-    return 4/3 * math.pi * (radius ** 3)
+    return 4 / 3 * math.pi * (radius ** 3)
