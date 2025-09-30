@@ -26,5 +26,4 @@ if __name__ == "__main__":
         unit_time=UNIT_TIME,
         particle_count=PARTICLE_COUNT
     )
-
     output_view.show_particles(particle_positions)
