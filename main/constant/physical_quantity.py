@@ -1,21 +1,23 @@
 import math
 
-WATER_DENSITY = 997  # kg/m^3 at 25 degrees Celsius
-WATER_VISCOSITY = 0.00089  # Pa·s (N·s/m^2) at 25 degrees Celsius
-GLYCEROL_DENSITY = 1260  # kg/m^3 at 20 degrees Celsius
-GLYCEROL_VISCOSITY = 1.412  # Pa·s (N·s/m^2) at 20 degrees Celsius
-ETHANOL_DENSITY = 789  # kg/m^3 at 20 degrees Celsius
-ETHANOL_VISCOSITY = 0.0012  # Pa·s (N·s/m^2)
+# 유체 물리량 (25°C / 298.15 K 기준)
+WATER_DENSITY = 997.0  # kg/m^3
+WATER_VISCOSITY = 0.00089  # Pa·s
+GLYCEROL_DENSITY = 1258.0  # kg/m^3 (25°C)
+GLYCEROL_VISCOSITY = 0.934  # Pa·s (25°C)
+ETHANOL_DENSITY = 785.0  # kg/m^3 (25°C)
+ETHANOL_VISCOSITY = 0.00107  # Pa·s (25°C)
 
-EPS_DENSITY = 50 # kg/m^3 (발포 폴리스티렌 (EPS), 매우 가벼운 입자)
+# 입자 물리량
+EPS_DENSITY = 50.0  # kg/m^3
 EPS_PARTICLE_RADIUS = 1e-6  # m
-LATEX_DENSITY = 1050  # kg/m^3 (물과 밀도가 비슷하여 순수한 브라운 운동)
+LATEX_DENSITY = 1050.0  # kg/m^3
 LATEX_PARTICLE_RADIUS = 500e-9  # m
-PVC_DENSITY = 1380  # kg/m^3 (폴리염화비닐, 밀도가 약간 높은 경우)
+PVC_DENSITY = 1380.0  # kg/m^3
 PVC_PARTICLE_RADIUS = 1e-6  # m
-SILICA_DENSITY = 2650  # kg/m^3 (확산과 침강의 균형)
+SILICA_DENSITY = 2650.0  # kg/m^3
 SILICA_PARTICLE_RADIUS = 2e-6  # m
-IRON_DENSITY = 7874  # kg/m^3 (밀도가 높은 경우)
+IRON_DENSITY = 7874.0  # kg/m^3
 IRON_PARTICLE_RADIUS = 10e-6  # m
 
 
