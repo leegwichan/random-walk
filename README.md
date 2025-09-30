@@ -47,8 +47,7 @@ $v_{\text{terminal}} = \frac{(m - \rho_{\text{fluid}} V) g}{6 \pi \eta r}$
 ```python
 diffusion_coefficient = BOLTZMANN_CONSTANT * temperature / (6 * PI * fluid_viscosity * particle_radius)  # 확산 계수 D 계산
 step_length = (6 * diffusion_coefficient * unit_time) ** 0.5  # 스텝 당 이동 거리 계산
-settling_velocity = (particle_mass - fluid_density * particle_volume) * GRAVITY_ACCELERATION
-/ (6 * PI * fluid_viscosity * particle_radius)  # 침강 속도 계산
+settling_velocity = (particle_mass - fluid_density * particle_volume) * GRAVITY_ACCELERATION / (6 * PI * fluid_viscosity * particle_radius)  # 침강 속도 계산
 step_count = int(time / unit_time)
 
 particle_positions = []
