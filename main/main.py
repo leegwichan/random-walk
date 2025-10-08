@@ -1,6 +1,7 @@
-import view.output_view as output_view
-import domain.random_walk as random_walk
 from constant.physical_quantity import *
+import domain.random_walk as random_walk
+import view.output_view as output_view
+import time
 
 FLUID_DENSITY = WATER_DENSITY
 FLUID_VISCOSITY = WATER_VISCOSITY
@@ -17,6 +18,7 @@ PARTICLE_COUNT = 500
 TITLE = "Silica Particles in Water (%d Particles, %d seconds)" % (PARTICLE_COUNT, TIME)
 
 if __name__ == "__main__":
+    start_time = time.time()
     particle_positions = random_walk.progress(
         particle_radius=PARTICLE_RADIUS,
         particle_mass=PARTICLE_MASS,
@@ -28,4 +30,8 @@ if __name__ == "__main__":
         unit_time=UNIT_TIME,
         particle_count=PARTICLE_COUNT
     )
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    print(f"걸린 시간 (time.time()): {elapsed_time:.8f} 초")
+
     output_view.show_particles(particle_positions, TITLE)
