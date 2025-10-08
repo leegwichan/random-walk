@@ -5,16 +5,16 @@ from constant.physical_quantity import *
 FLUID_DENSITY = WATER_DENSITY
 FLUID_VISCOSITY = WATER_VISCOSITY
 
-PARTICLE_RADIUS = IRON_PARTICLE_RADIUS
-PARTICLE_MASS = mass(IRON_DENSITY, PARTICLE_RADIUS)
+PARTICLE_RADIUS = SILICA_PARTICLE_RADIUS
+PARTICLE_MASS = mass(SILICA_DENSITY, PARTICLE_RADIUS)
 PARTICLE_VOLUME = volume(PARTICLE_RADIUS)
 
 TEMPERATURE = 298.15  # K (25 degrees Celsius)
 TIME = 300  # seconds
-UNIT_TIME = 0.05  # seconds
+UNIT_TIME = 0.1  # seconds
 PARTICLE_COUNT = 500
 
-TITLE = "EPS Particles in Water (%d Particles, %d seconds)" % (PARTICLE_COUNT, TIME)
+TITLE = "Silica Particles in Water (%d Particles, %d seconds)" % (PARTICLE_COUNT, TIME)
 
 if __name__ == "__main__":
     particle_positions = random_walk.progress(
