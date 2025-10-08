@@ -5,16 +5,16 @@ from constant.physical_quantity import *
 FLUID_DENSITY = WATER_DENSITY
 FLUID_VISCOSITY = WATER_VISCOSITY
 
-PARTICLE_RADIUS = LATEX_PARTICLE_RADIUS
-PARTICLE_MASS = mass(LATEX_DENSITY , PARTICLE_RADIUS)
+PARTICLE_RADIUS = IRON_PARTICLE_RADIUS
+PARTICLE_MASS = mass(IRON_DENSITY, PARTICLE_RADIUS)
 PARTICLE_VOLUME = volume(PARTICLE_RADIUS)
 
 TEMPERATURE = 298.15  # K (25 degrees Celsius)
-TIME = 10  # seconds
-UNIT_TIME = 0.01  # seconds
-PARTICLE_COUNT = 5000
+TIME = 300  # seconds
+UNIT_TIME = 0.05  # seconds
+PARTICLE_COUNT = 500
 
-TITLE = "Random Walk Simulation of Latex Particles in Water"
+TITLE = "EPS Particles in Water (%d Particles, %d seconds)" % (PARTICLE_COUNT, TIME)
 
 if __name__ == "__main__":
     particle_positions = random_walk.progress(
