@@ -21,9 +21,11 @@ def show_particles(particle_positions: List[ParticlePosition], title: str):
     ax1.set_ylim(-limit, limit)
     ax1.set_zlim(-limit, 0)
     ax1.set_box_aspect([1, 1, 1])
+    ax1.set_title("Fixed Scale", fontsize=10)
 
     ax2.scatter(X, Y, Z, c='blue', marker='o', s=4)
     ax2.set_box_aspect([1, 1, 1])
+    ax2.set_title("Auto Scale", fontsize=10)
 
     # 그래프 표기 설정
     for ax in [ax1, ax2]:
@@ -32,7 +34,7 @@ def show_particles(particle_positions: List[ParticlePosition], title: str):
         ax.set_zlabel('Z Axis (m)', fontsize=7, labelpad=10)
         ax.tick_params(axis='both', which='major', labelsize=8)
 
-    plt.show()
+    plt.savefig(f'../output/{title}.png', dpi=300, bbox_inches='tight')
 
 
 def _calculate_limit(X: List[float], Y: List[float], Z: List[float]) -> float:
@@ -43,6 +45,7 @@ def _calculate_limit(X: List[float], Y: List[float], Z: List[float]) -> float:
 
 
 def show_analysis_results(msd: float, rmsd: float, avg_depth: float, stddev_depth: float):
+    print("== Analysis Results ==")
     print(f"Mean Square Displacement (MSD): {msd:.8e} m^2")
     print(f"Root Mean Square Displacement (RMSD): {rmsd:.8e} m")
     print(f"Average Depth: {avg_depth:.8e} m")

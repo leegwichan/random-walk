@@ -24,7 +24,8 @@ SILICA_PARTICLE_RADIUS = 2e-6  # m
 # 철 입자
 IRON_DENSITY = 7874.0  # kg/m^3
 IRON_PARTICLE_RADIUS = 10e-6  # m
-
+# 물 입자
+WATER_PARTICLE_RADIUS = 1.5e-10
 
 def mass(density, radius):
     return 4 / 3 * math.pi * density * (radius ** 3)
