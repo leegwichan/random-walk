@@ -34,8 +34,16 @@ def show_particles(particle_positions: List[ParticlePosition], title: str):
 
     plt.show()
 
+
 def _calculate_limit(X: List[float], Y: List[float], Z: List[float]) -> float:
     max_x = max(abs(v) for v in X)
     max_y = max(abs(v) for v in Y)
     max_z = max(abs(v) for v in Z)
     return max(max_x, max_y, max_z) * 1.05
+
+
+def show_analysis_results(msd: float, rmsd: float, avg_depth: float, stddev_depth: float):
+    print(f"Mean Square Displacement (MSD): {msd:.8e} m^2")
+    print(f"Root Mean Square Displacement (RMSD): {rmsd:.8e} m")
+    print(f"Average Depth: {avg_depth:.8e} m")
+    print(f"Standard Deviation of Depth: {stddev_depth:.8e} m")

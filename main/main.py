@@ -1,5 +1,6 @@
 from constant.physical_quantity import *
 import domain.random_walk as random_walk
+import domain.calculation as calculation
 import view.output_view as output_view
 import time
 
@@ -32,6 +33,12 @@ if __name__ == "__main__":
     )
     end_time = time.time()
     elapsed_time = end_time - start_time
-    print(f"걸린 시간 (time.time()): {elapsed_time:.8f} 초")
+    print(f"걸린 시간 (time.time()): {elapsed_time:.8f} s")
 
+    msd = calculation.mean_square_displacement(particle_positions)
+    rmsd = calculation.root_mean_square_displacement(particle_positions)
+    avg_depth = calculation.average_depth(particle_positions)
+    stddev_depth = calculation.standard_deviation_depth(particle_positions, avg_depth)
+
+    output_view.show_analysis_results(msd, rmsd, avg_depth, stddev_depth)
     output_view.show_particles(particle_positions, TITLE)
