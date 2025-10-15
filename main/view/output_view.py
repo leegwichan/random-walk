@@ -34,7 +34,7 @@ def show_particles(particle_positions: List[ParticlePosition], title: str):
         ax.set_zlabel('Z Axis (m)', fontsize=7, labelpad=10)
         ax.tick_params(axis='both', which='major', labelsize=8)
 
-    plt.savefig(f'../output/{title}.png', dpi=300, bbox_inches='tight')
+    plt.savefig(f'../output/{title}.png', dpi=300, bbox_inches='tight', pad_inches=0.5)
 
 
 def _calculate_limit(X: List[float], Y: List[float], Z: List[float]) -> float:
@@ -44,8 +44,38 @@ def _calculate_limit(X: List[float], Y: List[float], Z: List[float]) -> float:
     return max(max_x, max_y, max_z) * 1.05
 
 
+def show_title(title: str):
+    print(f"\n== {title} ==")
+
+
+def show_parameters(particle_radius: float,
+                    particle_mass: float,
+                    particle_volume: float,
+                    fluid_viscosity: float,
+                    fluid_density: float,
+                    temperature: float,
+                    time: float,
+                    unit_time: float,
+                    particle_count: int):
+    print("\n== Simulation Parameters ==")
+    print("particle_radius: %.2e m" % particle_radius)
+    print("particle_mass: %.2e kg" % particle_mass)
+    print("particle_volume: %.2e m^3" % particle_volume)
+    print("fluid_viscosity: %.2e Pa·s" % fluid_viscosity)
+    print("fluid_density: %.2e kg/m^3" % fluid_density)
+    print("temperature: %.2f K" % temperature)
+    print("time: %.2f s" % time)
+    print("unit_time: %.2f s" % unit_time)
+    print("particle_count: %d" % particle_count)
+
+
+def show_elapsed_time(elapsed_time: float):
+    print("\n== Simulation Elapsed Time ==")
+    print(f"걸린 시간 (time.time()): {elapsed_time:.8f} s")
+
+
 def show_analysis_results(msd: float, rmsd: float, avg_depth: float, stddev_depth: float):
-    print("== Analysis Results ==")
+    print("\n== Analysis Results ==")
     print(f"Mean Square Displacement (MSD): {msd:.8e} m^2")
     print(f"Root Mean Square Displacement (RMSD): {rmsd:.8e} m")
     print(f"Average Depth: {avg_depth:.8e} m")
